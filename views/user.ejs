@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Bootstrap CSS -->
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class = "container">
+
+    <span id="username"><%= username %></span>
+    <span id="city"><%= city %></span>
+
+    <h1 id="quote"></h1>
+    <button id="get-quote">Get Quote</button>
+
+    <form action="/session" method="POST">
+      <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
+      <button>Logout</button>
+    </form>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="js/norris.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

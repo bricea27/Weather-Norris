@@ -1,0 +1,12 @@
+body {
+  
+}
+
+input, button {
+  display: block;
+  margin-top: 20px;
+}
+
+#username, #city {
+  display: none;
+}
