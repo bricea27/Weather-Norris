@@ -1,11 +1,15 @@
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var request = require('request');
 var bcrypt = require('bcrypt');
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database("users.db");
 var app = express();
 var secret = require('./secret.json');
+
+var googKey = process.env.GOOG_KEY;
+var forecastKey = process.env.FORECAST_KEY;
 
 app.use(session({
   secret: "penguin",
@@ -65,6 +69,39 @@ app.get("/:username", function(req, res){
     if (row) {
       var city = row.city;
       res.render("user.ejs", {username: username, city: city})
+    }else {
+      res.redirect("/");
+    }
+  });
+});
+
+
+
+
+//get weather info
+app.get("/:username/weather", function(req, res){
+  var username = req.params.username;
+  db.get("SELECT * FROM users WHERE username = ?", username, function(err, row){
+    if (err) { throw err; }
+    if (row) {
+      var city = row.city;
+      //geocode call
+      var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + googKey;
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          data = JSON.parse(body);
+          var lat = data.results[0].geometry.location.lat;
+          var long = data.results[0].geometry.location.lng;
+        }
+        //weather call
+        var url2 = "https://api.forecast.io/forecast/" + forecastKey + "/" + lat + "," + long;
+        request(url2, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            data = JSON.parse(body);
+            res.send(data);
+          }
+        })
+      })
     }else {
       res.redirect("/");
     }
