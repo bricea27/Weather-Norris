@@ -12,59 +12,61 @@
 </head>
 <body>
 
-  <div class = "container">
+  <section id="wrapper">
+    <div class = "container">
 
-    <span id="username"><%= username %></span>
-    <span id="city"><%= city %></span>
+      <span id="username"><%= username %></span>
+      <span id="city"><%= city %></span>
 
-    <div class="weather">
-      <button id="show-forecast" class="btn" data-toggle="modal" data-target="#forecast">
-        <i class="fa fa-area-chart"></i>
-      </button>
-      <h1><i id="icon"></i></h1>
-      <h3><%= city %></h3>
-      <h4 id="summary"></h4>
-      <h4 id="temperature"></h4>
-    </div>
-
-    <div class="quote">
-      <h1 id="quote"></h1>
-      <button id="get-quote" class="btn">Inspire Me</button>
-    </div>
-
-    <form action="/session" method="POST" id="logout">
-      <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
-      <button class="btn">Logout</button>
-    </form>
-
-    <div class="modal fade"  id="forecast">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Five Day Forecast</h4>
-        </div>
-          <div class="modal-body">
-            <ul id="fiveday">
-
-
-
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Close</button>
+      <div class="weather">
+        <button id="show-forecast" class="btn" data-toggle="modal" data-target="#forecast">
+          <i class="fa fa-area-chart"></i>
+        </button>
+        <h1><i id="icon"></i></h1>
+        <h3><%= city %></h3>
+        <h4 id="summary"></h4>
+        <h4 id="temperature"></h4>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
-<!--     <form action="/<%= username %>/weather" method="POST">
-  <input type="hidden" name="_method" value="PUT">
-  <input type="text" name="newcity" placeholder="Change City:">
-  <button class="btn btn-default">Submit</button>
-</form> -->
+      <div class="quote">
+        <h1 id="quote"></h1>
+        <button id="get-quote" class="btn">Inspire Me</button>
+      </div>
 
-  </div>
+      <form action="/session" method="POST" id="logout">
+        <input type="hidden" name="_method" value="DELETE"> <!-- overriding the method in the form tag -->
+        <button class="btn">Logout</button>
+      </form>
+
+      <div class="modal fade"  id="forecast">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Five Day Forecast</h4>
+          </div>
+            <div class="modal-body">
+              <ul id="fiveday">
+
+
+
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <!--     <form action="/<%= username %>/weather" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="text" name="newcity" placeholder="Change City:">
+    <button class="btn btn-default">Submit</button>
+  </form> -->
+
+    </div>
+  </section>
 
   <!-- Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

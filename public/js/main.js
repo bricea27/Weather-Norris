@@ -94,9 +94,14 @@ function getWeather(url){
     sum.innerHTML = summary;
 
     var temp = document.getElementById("temperature");
+
     temp.innerHTML = temperature + "&deg;";
 
-    console.log(temp);
+    if (temperature < 32) {
+      document.body.className = "cold";
+      console.log("cold");
+    }
+
 
     var icon = document.getElementById("icon");
     var current_icon = parsed["daily"]["data"][0]["icon"];
