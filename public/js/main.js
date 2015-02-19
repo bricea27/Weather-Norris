@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+var wrapper = document.getElementById("wrapper");
 var username = document.getElementById("username");
 var name = username.innerHTML;
 var weatherUrl = "/" + name + "/weather";
@@ -34,7 +35,7 @@ function getWeather(url){
     fiveday.forEach(function(each){
       console.log(each);
       var day = document.createElement("li");
-      day.className = "day";
+      day.className = "day col-md-15 col-sm-3";
       var icon = document.createElement("h1");
       var weather = each["icon"];
 
@@ -97,9 +98,17 @@ function getWeather(url){
 
     temp.innerHTML = temperature + "&deg;";
 
-    if (temperature < 32) {
-      document.body.className = "cold";
+    if (temperature <= 32) {
+      wrapper.className = "cold";
       console.log("cold");
+    }
+    if (temperature <= 72 && temperature > 32) {
+      wrapper.className = "mild";
+      console.log("mild");
+    }
+    if (temperature > 72) {
+      wrapper.className = "hot";
+      console.log("hot");
     }
 
 
